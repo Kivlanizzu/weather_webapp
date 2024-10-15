@@ -3,7 +3,7 @@
 }
 .col-sm-4{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
 }
 .col-sm-8 {
@@ -12,4 +12,12 @@
     flex-direction: row;
     justify-items: center;
     flex-wrap: wrap;
+}
+input[type=text] {
+    float: center;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: 2px solid black;
+    font-size: 17px;
 }

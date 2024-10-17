@@ -11,7 +11,7 @@ function dateFormatted(date) {
     return dateFormatted.toLocaleDateString("id-ID", options);
 }
 
-const dailyTemp = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,temperature_2m_min"
+const dailyTemp = "https://api.open-meteo.com/v1/forecast?latitude=-6.1818&longitude=106.8223&daily=weather_code,temperature_2m_max,temperature_2m_min"
 
 
 async function getWeather() {
@@ -19,13 +19,12 @@ async function getWeather() {
         const response = await fetch(dailyTemp);
         const data = await response.json();
         data.daily.time.forEach((date, index) => {
-            console.log(index)
-            document.getElementById("days").innerHTML += `
-            <div class="col-12 col-md-3">
+            document.getElementById("days").innerHTML += 
+            `<div class="col-12 col-md-3">
                 <div class="card text-bg-light mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">${formatDate(date)}</h5>
-                        <p class="card-text">${daily.temperature_2m_min[index]}-${daily.temperature_2m_max[index]}</p>
+                        <h5 class="card-title">${dateFormatted(date)}</h5>
+                        <p class="card-text">${daily.temperature_2m_min[index]} - ${daily.temperature_2m_max[index]}</p>
                     </div>
                 </div>
             </div>`

@@ -17,17 +17,24 @@ async function getWeather(latitude,longitude) {
     try {
         const response = await fetch( `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min`);
         const data = await response.json();
-        for (let i = 0; i < data.daily.time.length; i++) {
+        const response2 = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,is_day,weather_code`);
+        const data2 = await response2.json();
+        for (let i = 1; i < data.daily.time.length; i++) {
             document.getElementById("days").innerHTML += 
             `<div class="col-12 col-md-4">
                 <div class="card text-bg-light mb-3">
                     <div class="card-body">
                         <h5 class="card-title">${dateFormatted(data.daily.time[i])}</h5>
-                        <p class="card-text">${data.daily.temperature_2m_min[i]} - ${data.daily.temperature_2m_max[i]}</p>
+                        <p class="card-text">${data.daily.temperature_2m_min[i]} C - ${data.daily.temperature_2m_max[i]} C</p>
                     </div>
                 </div>
             </div>`
-        }
+        };
+        document.getElementById("currenttemp").innerHTML = 
+        `<p>${data2.current.temperature_2m} C</p>`;
+        document.getElementById("city").innerHTML = 
+        `<p>${data2.timezone} </p>`;
+
     } catch (error) {
         console.log(error);
     }
@@ -48,4 +55,3 @@ function getLocation() {
 
 getLocation()
 
-const currentweather = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,is_day,weather_code&timezone=auto"

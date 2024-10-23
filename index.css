@@ -1,6 +1,12 @@
 body {
-    background-color: slategray;
+    background-image: url(asset/hutan\ hujan.jpg);
     font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 #currenttemp{
@@ -48,12 +54,25 @@ body {
     align-items: center;
     
 }
-.col-sm-8 {
+
+#days {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     justify-items: center;
     flex-wrap: wrap;
+    align-items: center;
+    background-color: whitesmoke;
+    height: 100%;
+}
+
+.header{
+    margin-top: 50px;
+}
+.col-sm-8 {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
     align-items: center;
     background-color: whitesmoke;
 }

@@ -33,7 +33,7 @@ async function getWeather(latitude,longitude) {
         for (let i = 1; i < data.daily.time.length; i++) {
             document.getElementById("days").innerHTML += 
             `<div class="col-12 col-md-4">
-                <div class="card text-bg-light mb-3" stryle="background-color: 586990;">
+                <div class="card text-bg-light mb-3">
                     <div class="card-body">
                         <h5 class="card-title">${dateFormatted(data.daily.time[i])}</h5>
                         <p class="card-text">${data.daily.temperature_2m_min[i]} °C ~ ${data.daily.temperature_2m_max[i]} °C</p>
@@ -44,7 +44,7 @@ async function getWeather(latitude,longitude) {
         document.getElementById("currenttemp").innerHTML = 
         `<p>${data2.current.temperature_2m} °C</p>`;
         document.getElementById("date").innerHTML = 
-        `<p>${dateFormatted(data2.current.time)}</p>`;
+        `<p>${dateFormatted(data2.current.time)}, </p>`;
     } 
     catch (error) {
         console.log(error);

@@ -35,6 +35,9 @@ async function getWeather(latitude,longitude) {
             `<div class="col-12 col-md-4">
                 <div class="card text-bg-light mb-3">
                     <div class="card-body">
+                        <img class="card-img-top" style="width: 50%; margin-left: auto; margin-right: auto; justify-self: center; display: flex;" src="${
+                            wmo[data.daily.weather_code[i]].day.image
+                        }" alt="${wmo[data.daily.weather_code[i]].day.description}" class="card-img-top">
                         <h5 class="card-title">${dateFormatted(data.daily.time[i])}</h5>
                         <p class="card-text">${data.daily.temperature_2m_min[i]} °C ~ ${data.daily.temperature_2m_max[i]} °C</p>
                     </div>
